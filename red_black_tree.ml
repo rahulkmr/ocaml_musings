@@ -78,3 +78,19 @@ module MakeSet (Compare : CompareSig)
         let compare s1 s2 =
             compare_lists (to_list [] s1) (to_list [] s2)
     end
+
+type 'set element = Int of int | Set of 'set
+module rec Compare
+:CompareSig with type t = Set.t element
+= struct
+    type t = Set.t element
+    let compare x1 x2 =
+        match x1, x2 with
+        | Int i1, Int i2 ->
+                if i1 < i2 then LT else if i1 > i2 then GT else EQ
+        | Int _, Set _ -> LT
+        | Set _, Int _ -> GT
+        | Set s1, Set s2 -> Set.compare s1 s2
+end
+and Set :SetSig with module Compare = Compare = MakeSet (Compare)
+

@@ -27,3 +27,7 @@ module StringCaseEqual = struct
 end
 
 module SSet = MakeSet (StringCaseEqual)
+
+let () =
+    let xs = SSet.add "hello" SSet.empty in
+    Printf.printf "%s\n" (SSet.find "hello" xs)
