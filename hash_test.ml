@@ -1,8 +1,8 @@
 let () = 
-    let hash = Hash.create () in
-    Hash.add hash "hello" "world";
-    Hash.add hash "world" "hello";
-    Hash.add hash "foo" "bar";
-    Hash.add hash "bar" "foo";
-    Printf.printf "%s\n" (Hash.find hash "world");
-    Printf.printf "%s\n" (Hash.find hash "hello")
+    let hash = Myhash.create () in
+    Myhash.add hash "hello" "world";
+    Myhash.add hash "world" "hello";
+    Myhash.add hash "foo" "bar";
+    Myhash.add hash "bar" "foo";
+    Printf.printf "%s\n" (Myhash.find hash "world");
+    Printf.printf "%s\n" (Myhash.find hash "hello")
